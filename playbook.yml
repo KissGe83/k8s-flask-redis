@@ -9,28 +9,54 @@
       apt:
         update_cache: yes
 
-    - name: Install dependencies
+    - name: Check DOCKER-CE Installation
+      command: which docker
+      register: docker_check
+      ignore_errors: true
+
+    - name: Docker INSTALL
       apt:
         name:
-          - git
-          - curl
           - ca-certificates
-          - apt-transport-https
-          - software-properties-common
-          - python3-pip
-          - docker.io
+          - curl
+          - gnupg
+          - lsb-release
+        update_cache: yes
+      when: docker_check.rc != 0
+
+    - name: Docker GPG KEY + REPO Setup
+      block:
+        - name: Docker KEY download...
+          get_url:
+            url: https://download.docker.com/linux/ubuntu/gpg
+            dest: /etc/apt/keyrings/docker.asc
+            mode: '0644'
+
+        - name: Docker repository SETUP
+          copy:
+            dest: /etc/apt/sources.list.d/docker.list
+            content: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+
+        - name: Docker INSTALL
+          apt:
+            name:
+              - docker-ce
+              - docker-ce-cli
+              - containerd.io
+            update_cache: yes
+      when: docker_check.rc != 0
+
+    - name: Microk8s installed - check
+      command: which microk8s
+      register: microk8s_check
+      ignore_errors: true
+
+    - name: MicroK8s INSTALL
+      snap:
+        name: microk8s
+        classic: yes
         state: present
-
-    - name: Enable Docker service
-      systemd:
-        name: docker
-        enabled: yes
-        state: started
-
-    - name: Install MicroK8s
-      shell: snap install microk8s --classic --channel={{ microk8s_channel }}
-      args:
-        creates: /snap/bin/microk8s
+      when: microk8s_check.rc != 0
 
     - name: Add current user to microk8s group
       user:

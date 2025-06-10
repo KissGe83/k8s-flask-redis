@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: flask
-          image: ghcr.io/kissge/flask-redis-app:latest
+          image: ghcr.io/kissge83/flask-redis-app:latest
           ports:
           - containerPort: 5000
           envFrom:
