@@ -59,7 +59,7 @@ Add the following line at the bottom:
 Save and close the file (CTRL+O, ENTER, then CTRL+X).
 
 - You will also need to create the /mnt/data/redis-pv directory for the data store.
-- 
+  
 sudo mkdir -p /mnt/data/redis-pv
 
 sudo chown root:root /mnt/data/redis-pv
