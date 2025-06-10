@@ -44,12 +44,18 @@ Once deployed, the app is available at:
 http://flask.localhost
 
 ⚠️ IMPORTANT:
+
 - You must manually point flask.localhost to 127.0.0.1 in your local /etc/hosts file.
+  
 Edit /etc/hosts:
+
 Open the file with sudo:
+
 sudo nano /etc/hosts
+
 Add the following line at the bottom:
 --> 127.0.0.1 flask.localhost
+
 Save and close the file (CTRL+O, ENTER, then CTRL+X).
 
 - You will also need to create the /mnt/data/redis-pv directory for the data store.
