@@ -36,7 +36,9 @@ dns, ingress, storage, helm3, metrics-server
 - Ingress for browser access
 
 🚀 After deployment, the following pods will be running:
+
 2 × Flask pods
+
 1 × Redis pod
 
 Kubernetes will automatically scale the Flask pods based on CPU usage via the Horizontal Pod Autoscaler (HPA).
