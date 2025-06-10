@@ -81,7 +81,7 @@
         GITHUB_USER: "{{ lookup('env', 'GHCR_USER') }}"
         GHCR_TOKEN: "{{ lookup('env', 'GHCR_TOKEN') }}"
 
-    - name: Beállítások a flask.localhost és Redis persistent volume számára
+    - name: Setup for flask.localhost at /etc/hosts
       hosts: localhost
       become: yes
       tasks:
