@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 microk8s kubectl apply -f ../k8s/config.yaml
 microk8s kubectl apply -f ../k8s/secret.yaml
 microk8s kubectl apply -f ../k8s/hpa.yaml
