@@ -3,7 +3,9 @@ Test, learning to deploy a very easy Flask Application with Redis, including Kub
 
 🐳 Kubernetes Flask + Redis App — Ansible Installation Guide
 📦 Install with Ansible
+
 To deploy everything automatically, run:
+
 ansible-playbook playbook.yml -K
 
 🔧 What this playbook does:
