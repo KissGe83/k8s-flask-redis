@@ -9,6 +9,7 @@ ansible-playbook playbook.yml -K
 🔧 What this playbook does:
 
 ✅ Updates the apt package cache
+
 ✅ Checks if Docker-CE is installed
 ❌ If not, it installs required dependencies, adds Docker GPG key and repo, and installs Docker-CE
 
