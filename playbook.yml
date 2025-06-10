@@ -3,7 +3,7 @@
   become: true
   vars:
     microk8s_channel: 1.29/stable
-    app_image_name: ghcr.io/kissge/flask-redis-app:latest
+    app_image_name: ghcr.io/kissge83/flask-redis-app:latest
   tasks:
     - name: Update apt cache
       apt:
