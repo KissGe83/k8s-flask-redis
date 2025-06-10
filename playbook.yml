@@ -81,15 +81,11 @@
         GITHUB_USER: "{{ lookup('env', 'GHCR_USER') }}"
         GHCR_TOKEN: "{{ lookup('env', 'GHCR_TOKEN') }}"
 
-    - name: Setup for flask.localhost at /etc/hosts
-      hosts: localhost
-      become: yes
-      tasks:
-        - name: Add flask.localhost to /etc/hosts if not present
-          lineinfile:
-            path: /etc/hosts
-            line: "127.0.0.1 flask.localhost"
-            state: present
+    - name: Add flask.localhost to /etc/hosts if not present
+      lineinfile:
+        path: /etc/hosts
+        line: "127.0.0.1 flask.localhost"
+        state: present
 
     - name: Ensure /mnt/data/redis-pv directory exists
       file:
